@@ -22,9 +22,6 @@ const MainContainer = () => {
         <button className='rounded-lg bg-gray-300 p-2'>Music</button>
         <button className='rounded-lg bg-gray-300 p-2'>Movies</button>
         <button className='rounded-lg bg-gray-300 p-2'>Kannada Fims</button>
-        <button className='rounded-lg bg-gray-300 p-2'>Hero</button>
-        <button className='rounded-lg bg-gray-300 p-2'>Sports</button>
-
      </div>
        <VideoContainer /> 
     </div>
