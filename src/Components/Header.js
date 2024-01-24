@@ -1,17 +1,58 @@
-import React from 'react'
-import { useDispatch } from 'react-redux'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { togglemenu } from '../utils/appSlice'
-
+import SearchSuggestion from './SearchSuggestion'
+import {suggestion_api}  from './../utils/api'
+import { cacheResults } from '../utils/suggestionSlice'
 
 
 const Header = () => {
 
   const dispath = useDispatch()
-
-  const MenuHandler = ()=>{
-    
+  const MenuHandler = ()=>{  
     dispath(togglemenu())
   }
+
+  const searhCache = useSelector((store)=>store.suggestion)
+
+
+const [searchVal ,setSearchVal] = useState('')
+
+const [suggestions ,setSuggestions] = useState([])
+const [suggestionBox , setSuggestionBox] = useState(true)
+
+
+
+useEffect(()=>{
+
+  const getSearchSuggestion = async()=>{
+
+    const data = await fetch(suggestion_api+searchVal)
+    const json = await data.json()
+    setSuggestions(json[1])
+    dispath(cacheResults({
+      [searchVal] : json[1]
+    }))
+  }
+
+    const timer = setTimeout(()=>{
+      if(searhCache[searchVal]){
+        setSuggestions(searhCache[searchVal])
+        console.log(searchVal+' api cancelled')
+      }
+      else{
+        getSearchSuggestion()
+      }
+       
+    },200)
+
+return ()=> {
+  clearTimeout(timer)
+}
+  
+},[searchVal ])
+
+
   return (
     <div className='grid grid-flow-col p-3 m-2'>
         <div className='flex col-span-1'>
@@ -30,15 +71,18 @@ const Header = () => {
         </div>
         <div className='col-span-10 px-10'>
             <input
-            className='px-5 w-1/2 border p-2 border-gray-400 rounded-l-full'
+            className='px-9 w-1/2 border p-2 border-gray-400 rounded-l-full'
+            onChange={(e)=>{setSearchVal(e.target.value)}}
+            onFocus={()=>setSuggestionBox(true)}
+            onBlur={()=>setSuggestionBox(false)}
             >
             </input>
             <button
             className='border px-5 p-2 border-gray-400 rounded-r-full bg-gray-300'
-            
             >
             🔍
             </button>
+            {suggestionBox && <SearchSuggestion suggestions ={suggestions}/>}
 
         </div>
         <div className='col-span-1'>

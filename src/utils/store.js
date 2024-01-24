@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import appSlice from "./appSlice";
+import suggestionSlice from "./suggestionSlice.js";
 
 const store = configureStore({
     reducer :{
-        app :appSlice
+        app :appSlice,
+        suggestion: suggestionSlice 
     }
 })
 
