@@ -3,11 +3,6 @@ import { youtube_data } from '../utils/api'
 import VideoCard from './VideoCard'
 import { Link } from 'react-router-dom'
 
-
-
-
-
-
 const VideoContainer = () => {
 
   const [videos , setVideos] = useState([])
@@ -23,12 +18,12 @@ const VideoContainer = () => {
       console.log(video_data.items)
     }
 
-    if(videos.length===0)
+    if(videos?.length===0)
       return null
 
   return (
     <div className='flex flex-wrap'>
-       {videos.map((video)=>{
+       {videos?.map((video)=>{
           return <Link to={'/watch?v='+video.id} key={video.id}><VideoCard  data={video}/></Link>
         })}
     </div>
