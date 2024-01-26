@@ -21,7 +21,7 @@ const Header = () => {
 const [searchVal ,setSearchVal] = useState('')
 
 const [suggestions ,setSuggestions] = useState([])
-const [suggestionBox , setSuggestionBox] = useState(true)
+const [suggestionBox , setSuggestionBox] = useState(false)
 
 
 

@@ -13,7 +13,7 @@ const WatchPage = () => {
   const id = searchParams.get("v")
   console.log(id)
   return (
-    <div className='m-14 py-4 '><iframe width="900" height="506" src={"https://www.youtube.com/embed/"+ id +"?si=CRACb-SYYghAQcce"} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+    <div className='m-14 py-4 rounded-md'><iframe width="900" height="506" className='rounded-md' src={"https://www.youtube.com/embed/"+ id +"?si=CRACb-SYYghAQcce"} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
   )
 }
 
