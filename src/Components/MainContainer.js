@@ -9,7 +9,7 @@ const MainContainer = () => {
   return (
     <div
     className='m-4 '>
-    <div className='mt-14 p-2 space-x-5'>
+    <div className='mt-14 p-2 space-x-5 h-12 w-full overflow-hidden'>
        <Link to={'/search?q=All'}> <button className='rounded-lg bg-gray-300 p-2 hover:bg-gray-400'>All</button></Link>
        <Link to={'/search?q=Gaming'}> <button className='rounded-lg bg-gray-300 p-2 hover:bg-gray-400'>Gaming</button></Link>  
        <Link to={'/search?q=Music'}> <button className='rounded-lg bg-gray-300 p-2 hover:bg-gray-400'>Music</button></Link> 
